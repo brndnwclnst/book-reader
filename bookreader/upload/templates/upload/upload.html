@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'upload/styles.css' %}">
+    <head>
+        <title>Upload</title>
+        
+        <body>
+            <h1>Please upload your file</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="document">
+                <button type="submit">Upload file</button>
+            </form>
+            {% if url %}
+                <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+            {% endif %}
+        </body>
+    </head>
+</html>
